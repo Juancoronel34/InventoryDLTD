@@ -1,14 +1,33 @@
 'use client'
 
-import { useState } from 'react'
+import { SetStateAction, useState } from 'react'
 import Image from 'next/image'
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
-import { Button } from "../components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
-import { useToast } from "@/components/ui/use-toast"
+import { Button } from "/home/codespace/Drummond-Inventory/InventoryDLTD/src/componets/shared/ui/button.tsx"
+import { Input } from "/home/codespace/Drummond-Inventory/InventoryDLTD/src/componets/shared/ui/input.tsx"
+import { Checkbox } from "/home/codespace/Drummond-Inventory/InventoryDLTD/src/componets/shared/ui/checkbox.tsx"
+import { useToast } from "/home/codespace/Drummond-Inventory/InventoryDLTD/src/main.tsx"
 import { useRouter } from 'next/navigation'
 
+const App: React.FC = () => {
+  const toast = useToast();
+
+  const mostrarToast = () => {
+    toast.success('¡Operación exitosa!', {
+      duration: 3000, // Duración en milisegundos
+      position: 'top-right', // Posición del toast
+    });
+  };
+
+  return (
+    <div>
+      <h1>Ejemplo de Toast</h1>
+      <button onClick={mostrarToast}>Mostrar Toast</button>
+    </div>
+  );
+};
+
+// export default App;
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
@@ -58,7 +77,7 @@ export default function LoginPage() {
               type="email"
               placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: { target: { value: SetStateAction<string> } }) => setEmail(e.target.value)}
               className="bg-white text-black"
             />
           </div>
@@ -68,10 +87,10 @@ export default function LoginPage() {
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: { target: { value: SetStateAction<string> } }) => setPassword(e.target.value)}
               className="bg-white text-black pr-10"
             />
-            <button
+            <Button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-3 top-1/2 -translate-y-1/2"
@@ -81,7 +100,7 @@ export default function LoginPage() {
               ) : (
                 <EyeIcon className="h-5 w-5 text-gray-500" />
               )}
-            </button>
+            </Button>
           </div>
 
           <div className="flex items-center justify-between">

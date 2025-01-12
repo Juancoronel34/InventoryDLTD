@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Button } from "../../components/ui/button"
-import { Input } from "../../components/ui/input"
+import { Button } from "/home/codespace/Drummond-Inventory/InventoryDLTD/src/componets/shared/ui/button.tsx"
+import { Input } from "/home/codespace/Drummond-Inventory/InventoryDLTD/src/componets/shared/ui/input.tsx"
 import { useToast } from "../../components/ui/use-toast"
 import Header from '../../components/shared/Header'
 import Sidebar from '../../components/shared/Sidebar'
